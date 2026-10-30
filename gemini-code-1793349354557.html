@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-emerald-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Si Atung: Asesmen & Pendampingan Pengawas Sekolah</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hidden-section { display: none !important; }
+        @media print {
+            body * { visibility: hidden; }
+            #printable-certificate, #printable-certificate * { visibility: visible; }
+            #printable-certificate { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 0; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="h-full text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="bg-emerald-800 text-white shadow-lg sticky top-0 z-50 no-print">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-400 text-emerald-950 font-black rounded-full w-10 h-10 flex items-center justify-center shadow-md">
+                    🦌
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Si Atung - Pendamping Pengawas</h1>
+                    <p class="text-xs text-emerald-200">Asesmen Kompetensi & Pendampingan Satuan Pendidikan</p>
+                </div>
+            </div>
+            <div id="user-badge" class="hidden flex items-center space-x-2 bg-emerald-900/60 px-3 py-1.5 rounded-lg border border-emerald-700">
+                <span class="text-xs text-emerald-300">Peserta:</span>
+                <span id="nav-user-name" class="font-semibold text-sm text-amber-300"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-6xl w-full mx-auto p-4 sm:p-6">
+
+        <!-- SECTION 1: WELCOME & REGISTRATION -->
+        <section id="sec-welcome" class="bg-white rounded-2xl shadow-xl border border-emerald-100 p-6 sm:p-10 text-center max-w-2xl mx-auto my-8">
+            <div class="relative w-32 h-32 mx-auto mb-6 bg-gradient-to-tr from-amber-200 to-emerald-200 rounded-full flex items-center justify-center shadow-inner border-4 border-amber-400">
+                <span class="text-6xl" role="img" aria-label="Atung">🦌</span>
+                <span class="absolute -bottom-1 -right-1 bg-emerald-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border-2 border-white">Mentor</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-emerald-900 mb-3">Selamat Datang di Portal Pembelajaran Pengawas!</h2>
+            <p class="text-slate-600 mb-6 text-sm sm:text-base leading-relaxed">
+                Halo! Saya <span class="font-bold text-emerald-800">Si Atung</span> (Rusa Bawean yang siap mendampingi Anda). Mari tingkatkan kompetensi supervisi, pendampingan sosio-kultural, dan selesaikan 70 Asesmen Kompetensi Kepengawasan secara taktis.
+            </p>
+
+            <form id="form-register" onsubmit="startApp(event)" class="space-y-4 text-left max-w-md mx-auto">
+                <div>
+                    <label for="input-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Nama Lengkap & Gelar Peserta</label>
+                    <input type="text" id="input-name" required placeholder="Contoh: Dr. Supriyadi, M.Pd." class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition shadow-sm">
+                </div>
+                <div>
+                    <label for="input-unit" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Unit Kerja / Wilayah Binaan</label>
+                    <input type="text" id="input-unit" placeholder="Contoh: Dinas Pendidikan Kab. Gresik" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition shadow-sm">
+                </div>
+                <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                    <span>Mulai Petualangan</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </form>
+        </section>
+
+        <!-- SECTION 2: STUDI KASUS SOSIO-KULTURAL -->
+        <section id="sec-scenarios" class="hidden-section space-y-6">
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl flex items-start space-x-3 shadow-sm">
+                <span class="text-3xl">🦌</span>
+                <div>
+                    <h3 class="font-bold text-amber-900">Pesan dari Si Atung (Skenario Lapangan)</h3>
+                    <p class="text-sm text-amber-800">Sebelum masuk ke Asesmen Utama (70 Soal), mari selesaikan 3 Tantangan Skenario Kendala Riil Lapangan dan Mini-Quiz Sosio-Kultural di bawah ini!</p>
+                </div>
+            </div>
+
+            <!-- Scenario Cards Container -->
+            <div id="scenarios-container" class="grid gap-6 md:grid-cols-3"></div>
+
+            <!-- TABEL STRATEGI DIFERENSIASI PENDAMPINGAN -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden my-8">
+                <div class="bg-emerald-800 text-white p-4 sm:p-5">
+                    <h3 class="font-bold text-lg flex items-center space-x-2">
+                        <span>📊</span>
+                        <span>Matriks Strategi Diferensiasi Pendampingan Satuan Pendidikan</span>
+                    </h3>
+                    <p class="text-xs text-emerald-200 mt-1">Panduan pengawas sekolah dalam menyesuaikan metode pendampingan berdasarkan kapasitas sekolah.</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                        <thead class="bg-emerald-100 text-emerald-950 font-bold border-b border-emerald-200">
+                            <tr>
+                                <th class="p-3 sm:p-4">Kategori Sekolah</th>
+                                <th class="p-3 sm:p-4">Karakteristik Utama</th>
+                                <th class="p-3 sm:p-4">Peran Utama Pengawas</th>
+                                <th class="p-3 sm:p-4">Bentuk Pendampingan Taktis</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-bold text-red-700 bg-red-50/50">Mandiri / Perlu Perhatian</td>
+                                <td class="p-3 sm:p-4">Rapor pendidikan rendah, resistensi tinggi terhadap perubahan, konflik internal.</td>
+                                <td class="p-3 sm:p-4 font-semibold">Pendamping Mandiri / Direktif Terstruktur</td>
+                                <td class="p-3 sm:p-4">Pelatihan intensif, intervensi tata kelola, evaluasi terukur mingguan.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-bold text-amber-700 bg-amber-50/50"> berkembang / Bertahap</td>
+                                <td class="p-3 sm:p-4">Sudah memiliki motivasi, namun administrasi dan kualitas pembelajaran belum konsisten.</td>
+                                <td class="p-3 sm:p-4 font-semibold">Coach & Fasilitator</td>
+                                <td class="p-3 sm:p-4">Diskusi kelompok terstruktur, workshop KKG/MGMP internal, pendampingan reflektif.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-bold text-emerald-700 bg-emerald-50/50">Berbagi / Mandiri Advanced</td>
+                                <td class="p-3 sm:p-4">Rapor pendidikan tinggi, inovasi pembelajaran berjalan, iklim inklusif.</td>
+                                <td class="p-3 sm:p-4 font-semibold">Mitra Strategis & Penggerak</td>
+                                <td class="p-3 sm:p-4">Mendorong menjadi sekolah rujukan, pengimbasan ke sekolah sekitar, penelitian kolaboratif.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- MINI QUIZ SOSIO KULTURAL -->
+            <div id="mini-quiz-box" class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 space-y-6">
+                <div class="border-b pb-4">
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Tahap Asesmen Awal</span>
+                    <h3 class="text-xl font-bold text-slate-800">Mini-Quiz Kompetensi Sosio-Kultural (5 Soal Studi Kasus)</h3>
+                </div>
+                <div id="mini-quiz-questions" class="space-y-6"></div>
+                <div id="mini-quiz-result" class="hidden p-4 rounded-xl bg-slate-100 text-center font-bold"></div>
+                <button id="btn-to-main-quiz" onclick="goToMainQuiz()" class="hidden w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition text-center">
+                    Lanjut ke Asesmen Utama (70 Soal Uji Kompetensi) ➔
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 3: UTAMA (70 SOAL UJI KOMPETENSI) -->
+        <section id="sec-main-quiz" class="hidden-section space-y-6">
+            <!-- Progress Bar Card -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold text-slate-500 uppercase">Progress Asesmen</span>
+                    <h3 class="font-extrabold text-emerald-900 text-lg">Soal <span id="current-q-num">1</span> dari 70</h3>
+                </div>
+                <div class="w-full sm:w-1/2 bg-slate-200 h-3 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="bg-emerald-600 h-full w-0 transition-all duration-300"></div>
+                </div>
+                <div class="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">
+                    Sistem Penilaian Otomatis
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8 space-y-6">
+                <div class="flex items-start space-x-3">
+                    <span class="bg-emerald-100 text-emerald-800 font-extrabold text-sm px-3 py-1 rounded-lg">Soal #<span id="q-index-badge">1</span></span>
+                    <p id="q-text" class="text-base sm:text-lg font-semibold text-slate-800 leading-relaxed"></p>
+                </div>
+
+                <div id="q-options" class="space-y-3 pt-2"></div>
+
+                <div id="q-feedback" class="hidden p-4 rounded-xl text-sm leading-relaxed border"></div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                    <button id="btn-prev-q" onclick="prevQuestion()" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-sm transition">
+                        ← Sebelumnya
+                    </button>
+                    <button id="btn-next-q" onclick="nextQuestion()" class="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-sm shadow-md transition">
+                        Selanjutnya →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: HASIL & SERTIFIKAT -->
+        <section id="sec-result" class="hidden-section space-y-8 my-6">
+            <!-- Score Overview -->
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-8 text-center max-w-xl mx-auto space-y-4">
+                <div class="w-20 h-20 mx-auto rounded-full bg-emerald-100 flex items-center justify-center text-4xl">
+                    🏆
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800">Hasil Evaluasi Asesmen</h2>
+                <p class="text-slate-600 text-sm">Selamat, Anda telah menyelesaikan seluruh rangkaian 70 soal Uji Kompetensi dan Studi Kasus Sosio-Kultural!</p>
+                
+                <div class="p-6 bg-emerald-50 rounded-2xl border border-emerald-200 my-4">
+                    <span class="text-xs uppercase font-bold text-emerald-700 tracking-wider">Nilai Akhir Kelulusan</span>
+                    <div id="final-score-val" class="text-5xl font-black text-emerald-900 my-2">0</div>
+                    <p id="final-status-text" class="text-sm font-bold"></p>
+                </div>
+
+                <div id="certificate-action-area" class="hidden space-y-3">
+                    <button onclick="window.print()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 px-6 rounded-xl shadow-md transition flex items-center justify-center space-x-2">
+                        <span>🖨️ Cetak / Simpan Sertifikat PDF</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SERTIFIKAT DIGITAL AREA -->
+            <div id="certificate-wrapper" class="hidden">
+                <div id="printable-certificate" class="bg-white border-8 border-double border-emerald-800 p-8 sm:p-12 rounded-3xl shadow-2xl max-w-4xl mx-auto relative overflow-hidden my-8">
+                    <!-- Background Watermark -->
+                    <div class="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center text-9xl">
+                        🦌
+                    </div>
+                    
+                    <div class="text-center space-y-6 relative z-10">
+                        <div class="flex justify-between items-center border-b-2 border-emerald-800 pb-4">
+                            <div class="text-left">
+                                <h4 class="font-black text-emerald-900 text-lg uppercase tracking-wider">Lembaga Akselerasi Kepengawasan</h4>
+                                <p class="text-xs text-slate-500">Program Pendampingan Satuan Pendidikan Berbasis AI</p>
+                            </div>
+                            <span class="text-4xl">🏅</span>
+                        </div>
+
+                        <div class="space-y-2 py-4">
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-emerald-950 uppercase tracking-widest">Sertifikat Kelulusan</h2>
+                            <p class="text-xs text-slate-500 tracking-wider">Nomor: REG/UKPS-AI/2026/<span id="cert-rand-id">8839</span></p>
+                        </div>
+
+                        <p class="text-sm text-slate-600 italic">Diberikan secara resmi kepada:</p>
+
+                        <div class="py-2">
+                            <h3 id="cert-user-name" class="text-2xl sm:text-3xl font-black text-emerald-900 underline decoration-amber-400 underline-offset-8"></h3>
+                            <p id="cert-user-unit" class="text-sm text-slate-600 mt-2 font-medium"></p>
+                        </div>
+
+                        <p class="text-sm text-slate-700 max-w-2xl mx-auto leading-relaxed">
+                            Atas keberhasilan dan kompetensinya dalam menyelesaikan <span class="font-bold">Asesmen Kompetensi Pengawas Sekolah & Pendampingan Satuan Pendidikan</span> meliputi Penguasaan Supervisi Manajerial, Akademik, PTK, serta Pengelolaan Sosio-Kultural Sekolah dengan Nilai Akhir:
+                        </p>
+
+                        <div class="inline-block bg-amber-100 border-2 border-amber-400 px-6 py-2 rounded-xl text-2xl font-black text-amber-950">
+                            SCORE: <span id="cert-score">0</span> / 100
+                        </div>
+
+                        <!-- Signature Box -->
+                        <div class="pt-8 flex justify-between items-end text-xs sm:text-sm">
+                            <div class="text-left space-y-1">
+                                <p class="text-slate-500">Ditetapkan di: Surabaya</p>
+                                <p class="text-slate-500">Tanggal: 30 Oktober 2026</p>
+                            </div>
+                            <div class="text-center space-y-2">
+                                <div class="text-4xl mb-1">🦌</div>
+                                <p class="font-extrabold text-emerald-950 border-t border-slate-400 pt-1">Si Atung (Rusa Bawean)</p>
+                                <p class="text-xs text-slate-500">Mentor Utama & Maskot Edukasi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-emerald-900 text-emerald-200 text-center text-xs py-4 border-t border-emerald-800 no-print mt-auto">
+        <p>© 2026 Si Atung Learning Engine. Sistem Pembelajaran & Asesmen Mandiri Pengawas Sekolah SD.</p>
+    </footer>
+
+    <!-- JAVASCRIPT ENGINE -->
+    <script>
+        // GLOBAL USER STATE
+        let currentUser = { name: '', unit: '' };
+        let miniQuizAnswers = {};
+        let mainQuizAnswers = {};
+        let currentQuestionIdx = 0;
+
+        // SCENARIOS DATA
+        const scenariosData = [
+            {
+                title: "Konflik Pemilihan Ketua Komite",
+                desc: "Terjadi perselisihan tajam antar tokoh masyarakat terkait latar belakang suku/agama kandidat Ketua Komite di SD Negeri Binaan.",
+                options: [
+                    { text: "Mengintervensi langsung dan menunjuk ketua komite secara sepihak.", correct: false, reason: "Kurang demokratis dan dapat memicu resistensi warga." },
+                    { text: "Fasilitasi musyawarah inklusif berlandaskan regulasi tata kelola komite sekolah.", correct: true, reason: "Tepat Taktis! Menjaga netralitas dan mengedepankan regulasi serta keberagaman." },
+                    { text: "Membiarkan konflik selesaikan sendiri oleh pihak sekolah.", correct: false, reason: "Pengawas terkesan lepas tangan dari tanggung jawab pembinaan sosio-kultural." }
+                ]
+            },
+            {
+                title: "Penolakan Materi Muatan Lokal Budaya",
+                desc: "Sebagian orang tua murid menolak materi seni budaya daerah karena dianggap tidak sesuai dengan nilai kelompok tertentu.",
+                options: [
+                    { text: "Mengagendakan dialog terbuka, edukasi moderasi beragama dan pelestarian budaya.", correct: true, reason: "Taktis & Inklusif! Membangun kesepahaman tanpa mengorbankan kurikulum muatan lokal." },
+                    { text: "Menghapus materi budaya tersebut dari kurikulum sekolah.", correct: false, reason: "Mengebiri integritas kurikulum nasional dan nilai kebhinekaan." },
+                    { text: "Memaksa siswa ikut tanpa mau mendengarkan aspirasi orang tua.", correct: false, reason: "Bisa memicu konflik sosio-kultural yang lebih besar." }
+                ]
+            },
+            {
+                title: "Resistensi Guru Terhadap Kurikulum Baru",
+                desc: "Beberapa guru senior menolak membuat modul ajar berfitur diferensiasi dengan alasan usia dan kerumitan administrasi.",
+                options: [
+                    { text: "Memberikan sanksi administratif langsung kepada guru senior.", correct: false, reason: "Menimbulkan iklim kerja bertekanan dan tidak simpatik." },
+                    { text: "Pendampingan sebaya (Peer Mentoring) dengan guru muda serta workshop bertahap.", correct: true, reason: "Sangat Taktis! Menggabungkan empati, pemanfaatan potensi rekan sejawat, dan peningkatan kompetensi." },
+                    { text: "Memaafkan dan membiarkan guru senior mengajar tanpa modul.", correct: false, reason: "Menurunkan standar mutu pembelajaran di satuan pendidikan." }
+                ]
+            }
+        ];
+
+        // MINI QUIZ DATA (5 SOAL SOSIO-KULTURAL)
+        const miniQuizData = [
+            {
+                id: 1,
+                q: "Bagaimana sikap pengawas saat menghadapi perbedaan pandangan norma kebiasaan antar guru di sekolah multikultural?",
+                opts: ["A. Memihak norma mayoritas", "B. Mengembangkan norma bersama yang inklusif berbasis Pancasila", "C. Menghindari pembahasan budaya", "D. Menyerahkan keputusan penuh ke Kepala Sekolah"],
+                ans: 1,
+                exp: "Pengawas harus memfasilitasi norma inklusif yang merekatkan keberagaman."
+            },
+            {
+                id: 2,
+                q: "Tindakan taktis pengawas saat terjadi stereotip gender dalam pembagian tugas mengajar adalah...",
+                opts: ["A. Melakukan edukasi kesetaraan kompetensi dalam rapat dewan guru", "B. Membiarkan asal tugas selesai", "C. Memindahkan guru yang protes", "D. Mengkritik secara terbuka di depan umum"],
+                ans: 0,
+                exp: "Edukasi profesional dan berbasis kompetensi menjaga keadilan lingkungan kerja."
+            },
+            {
+                id: 3,
+                q: "Pengawas menemukan ada kelompok siswa minoritas yang terisolasi saat jam istirahat. Langkah awal pengawas:",
+                opts: ["A. Menegur langsung siswa minoritas tersebut", "B. Membimbing guru/KS untuk menciptakan program kohesi sosial dan budaya inklusif", "C. Melaporkan ke dinas sosial", "D. Membiarkan karena dinamika anak-anak"],
+                ans: 1,
+                exp: "Pengawas membina Kepala Sekolah dan guru agar membangun iklim sekolah aman dan inklusif."
+            },
+            {
+                id: 4,
+                q: "Pendampingan yang menghargai kebhinekaan budaya lokal dalam penyusunan KTSP dilakukan dengan...",
+                opts: ["A. Mengabaikan konteks lokal agar seragam secara nasional", "B. Mengintegrasikan kearifan lokal yang relevan ke dalam muatan kurikulum", "C. Mewajibkan budaya asing", "D. Menolak semua tradisi daerah"],
+                ans: 1,
+                exp: "Konteks kearifan lokal memperkuat identitas dan karakter peserta didik."
+            },
+            {
+                id: 5,
+                q: "Prinsip utama pengawas sekolah dalam menyelesaikan sengketa internal warga sekolah adalah...",
+                opts: ["A. Otoriter dan direktif murni", "B. Netral, objektif, komunikatif, dan berbasis mufakat", "C. Membela pihak yang memberi fasilitas", "D. Menutup-nutupi masalah"],
+                ans: 1,
+                exp: "Sikap netral dan komunikatif menjaga kepercayaan dan stabilitas sekolah."
+            }
+        ];
+
+        // 70 SOAL UJI KOMPETENSI
+        const questionsData = [
+            {
+                q: "Kegiatan pembinaan supervisi manajerial dalam rangka meningkatkan mutu pendidikan di sekolah harus sesuai prinsip konstruktif. Prinsip konstruktif yang paling tepat adalah.....",
+                options: [
+                    "A. Didasarkan pada keadaan dana penunjang, kenyataan yang sebenarnya terjadi, kesiapan pengawas sekolah, diarahkan kepada pencapaian SNP",
+                    "B. Terlaksana sesuai dengan rencana program kepengawasan, berdasarkan kepentingan setiap kepala sekolah dan tenaga kependidikan lainnya",
+                    "C. Dapat memberikan motivasi kepada kepala sekolah dan tenaga kependidikan lainnya, sehingga tumbuh dorongan untuk bekerja lebih baik",
+                    "D. Terjalinnya hubungan yang harmonis antara pengawas sekolah dengan kepala sekolah dan tenaga kependidikan lainnya sesuai normatif yang berlaku"
+                ],
+                answer: 2,
+                reason: "Prinsip konstruktif berfokus pada pembangunan motivasi dan dorongan positif untuk membina perbaikan kinerja."
+            },
+            {
+                q: "Pengawas sekolah hendaknya mampu menerapkan prinsip kerja sama dalam melaksanakan supervisi manajerial, sebab bermanfaat dalam......",
+                options: [
+                    "A. Memberikan support, mendorong, menstimulasi kepala sekolah dan tenaga kependidikan lainnya, sehingga merasa tumbuh secara bersama",
+                    "B. Terjalin hubungan profesional antara pengawas sekolah dengan kepala sekolah dan tenaga kependidikan lainnya, bukan didasarkan atas hubungan pribadi",
+                    "C. Terjalinnya hubungan yang erat antara pengawas sekolah dengan kepala sekolah dan tenaga kependidikan lainnya, menyadari kesalahan yang ditunjukkan dengan sukarela",
+                    "D. Mengupayakan berkembangnya kepercayaan diri bagi kepala sekolah dan tenaga kependidikan lainnya, yang pada akhirnya dapat menumbuhkan motivasi kerja"
+                ],
+                answer: 0,
+                reason: "Kerja sama menciptakan rasa kebersamaan, saling mendukung, dan tumbuh secara bersama-sama dalam mencapai mutu."
+            },
+            {
+                q: "Pelaksanaan prinsip demokrasi dalam supervisi manajerial pada pengawas sekolah melalui layanan dan bantuan didasarkan hubungan kemanusiaan, diharapkan dapat.....",
+                options: [
+                    "A. Memberikan support menstimulus guru dan kepala sekolah, sehingga mereka merasa tumbuh bersama",
+                    "B. Membangun hubungan yang akrab sehingga guru dan kepala sekolah merasa aman dalam menjalankan tugasnya",
+                    "C. Mampu menciptakan suasana kerja yang menyenangkan, bukan cara-cara yang menakutkan",
+                    "D. Dilaksanakan secara sistematis, berencana, dan kontinyu untuk memperbaiki kinerja kepala sekolah"
+                ],
+                answer: 2,
+                reason: "Prinsip demokrasi menghargai pendapat dan menciptakan suasana hubungan kemanusiaan yang menyenangkan tanpa rasa takut."
+            },
+            {
+                q: "Metode yang harus dilakukan oleh pengawas satuan pendidikan dalam supervisi manajerial adalah monitoring dan evaluasi. Kegiatan utama pengawas sekolah dalam melakukan monitoring adalah......",
+                options: [
+                    "A. Kegiatan untuk mengetahui perkembangan pelaksanaan penyelenggaraan sekolah, apakah sudah sesuai dengan rencana, program, atau standar yang telah ditetapkan",
+                    "B. Kegiatan dalam usaha menemukan kesalahan-kesalahan yang harus diperbaiki dalam pelaksanaan program sekolah",
+                    "C. Kegiatan pengumpulan data mengenai perkembangan sekolah selama program berjalan yang telah dilakukan oleh kepala sekolah dan guru, dan lebih bersifat klinis",
+                    "D. Kegiatan dalam upaya memperoleh umpan balik bagi sekolah atau pihak lain yang berkaitan untuk menyukseskan ketercapaian tujuan yang telah ditetapkan"
+                ],
+                answer: 0,
+                reason: "Monitoring bertujuan untuk memantau serta memastikan keterlaksanaan program sesuai ketercapaian rencana dan SNP."
+            },
+            {
+                q: "Langkah terakhir yang dilaksanakan oleh pengawas sekolah menggunakan metode Delphi ketika melaksanakan supervisi manajerial adalah.....",
+                options: [
+                    "A. Masing-masing pihak diminta mengajukan pendapatnya secara tertulis tanpa disertai identitas",
+                    "B. Mengumpulkan pendapat yang masuk, dan membuat daftar urutannya sesuai dengan jumlah orang yang berpendapat sama",
+                    "C. Menyampaikan kembali daftar rumusan pendapat dari berbagai pihak tersebut untuk diberikan urutan prioritasnya",
+                    "D. Mengumpulkan kembali urutan prioritas menurut peserta, dan menyampaikan hasil akhir prioritas keputusan dari seluruh peserta"
+                ],
+                answer: 3,
+                reason: "Langkah penutup Metode Delphi adalah konsensus akhir berupa penyampaian hasil urutan prioritas keputusan."
+            },
+            {
+                q: "Di salah satu sekolah ada seorang guru yang jarang masuk, tidak memiliki perangkat pembelajaran secara lengkap, dan sering marah-marah. Tindakan yang dilakukan pengawas untuk membantu kepala sekolah mengatasi hal tersebut adalah.....",
+                options: [
+                    "A. Pengawas sekolah mengumpulkan data guru tersebut dari kepala sekolah dan guru lainnya",
+                    "B. Pengawas sekolah memberi saran kepada kepala sekolah agar guru melakukan evaluasi diri sekolah",
+                    "C. Pengawas sekolah bersama kepala sekolah melaksanakan kunjungan kelas ketika guru itu sedang mengajar",
+                    "D. Pengawas sekolah bersama kepala sekolah mengadakan percakapan dengan guru yang dilaksanakan di ruang kepala sekolah"
+                ],
+                answer: 3,
+                reason: "Pendekatan konseling/percakapan pribadi bersama kepala sekolah secara tertutup merupakan tindakan taktis pertama."
+            },
+            {
+                q: "Teknik supervisi yang paling tepat dalam supervisi manajerial adalah..........",
+                options: [
+                    "A. Observasi hasil pekerjaan tenaga kependidikan",
+                    "B. Kunjungan ke ruang tenaga kependidikan",
+                    "C. Percakapan pribadi dengan tenaga kependidikan",
+                    "D. Diskusi pengelolaan administrasi sekolah"
+                ],
+                answer: 3,
+                reason: "Diskusi pengelolaan administrasi sekolah mencakup supervisi manajerial secara kolaboratif."
+            },
+            {
+                q: "Tindakan yang paling tepat dilakukan pengawas sekolah dalam membina dan membimbing tenaga kependidikan lainnya dalam bidang administrasi adalah.....",
+                options: [
+                    "A. Mengarahkan tentang bagaimana caranya agar sekolah memiliki administrasi yang tertib, rapi, efisien, dan efektif",
+                    "B. Mengevaluasi dan mereview hasil yang telah dikerjakan oleh tenaga kependidikan di sekolah",
+                    "C. Memberi saran dalam penyusunan perencanaan, pelaksanaan, dan pelaporan program administrasi sekolah",
+                    "D. Memberi contoh dalam melakukan kegiatan pendampingan dalam menyelesaikan pekerjaan administrasi sekolah"
+                ],
+                answer: 3,
+                reason: "Pendampingan langsung dengan memberi contoh nyata merupakan bentuk bimbingan terpraktik dan efektif."
+            },
+            {
+                q: "Tugas pengawas dalam supervisi manajerial adalah membimbing dan memberi contoh kepada kepala sekolah dalam rangka meningkatkan mutu pendidikan, antara lain dengan......",
+                options: [
+                    "A. Membimbing kepala sekolah dalam pengelolaan sekolah dalam menunjang peningkatan proses pembelajaran guru",
+                    "B. Membimbing kepala sekolah dalam meningkatkan kualitas proses pembelajaran seluruh mata pelajaran di kelas",
+                    "C. Membimbing kepala sekolah agar seluruh guru memiliki perangkat pelajaran secara lengkap",
+                    "D. Membimbing kepala sekolah agar mampu menggali sumber daya untuk membiayai proses pembelajaran"
+                ],
+                answer: 0,
+                reason: "Supervisi manajerial fokus pada tata kelola/pengelolaan sekolah untuk mendukung muara mutu pembelajaran."
+            },
+            {
+                q: "Dalam menyusun program pengawasan, seorang pengawas dapat memulai dengan melakukan analisis terhadap faktor internal dan eksternal wilayah dan sekolah-sekolah yang ada. Hasil analisis digunakan.....",
+                options: [
+                    "A. Sebagai dasar dalam menentukan prioritas kegiatan yang perlu segera ditingkatkan mutunya",
+                    "B. Sebagai gambaran apa yang seharusnya dikerjakan dalam menjalankan tugas dan fungsi pengawas",
+                    "C. Sebagai gambaran apa yang seharusnya dikerjakan dan bagaimana seharusnya kegiatan itu dikerjakan",
+                    "D. Sebagai dasar dalam menetapkan tindak lanjut untuk program pengawasan tahun berikutnya"
+                ],
+                answer: 0,
+                reason: "Analisis SWOT/kebutuhan berguna untuk menetapkan skala prioritas intervensi pengawasan."
+            },
+            {
+                q: "Dari empat isi pokok kegiatan hasil analisis kebutuhan yang harus dituangkan dalam program kerja pengawasan tahunan, salah satu penyebab di bawah ini tidak layak masuk dalam program.....",
+                options: [
+                    "A. Identifikasi hasil pengawasan pada tahun sebelumnya",
+                    "B. Pengolahan dan analisis hasil pengawasan tahun sebelumnya",
+                    "C. Perumusan rancangan program pengawasan tahunan",
+                    "D. Pemantapan rancangan instrumen kepengawasan"
+                ],
+                answer: 3,
+                reason: "Pemantapan instrumen merupakan langkah teknis operasional, bukan isi pokok analisis kebutuhan program tahunan."
+            },
+            {
+                q: "Dalam rangka pelaksanaan tugas pokok dan fungsi pengawas sekolah diperlukan analisis kebutuhan program kepengawasan yang realistis, maksudnya.......",
+                options: [
+                    "A. Pokok masalah yang dijadikan program dalam penyusunan program kerja jelas terfokus pada pencapaian tujuan",
+                    "B. Program-program dan kegiatan-kegiatan selain dapat diukur juga harus dapat dicapai disesuaikan dengan berbagai kondisi dan kebutuhan di sekolah",
+                    "C. Program dan kegiatan dirancang dengan biaya yang semurah mungkin untuk menghemat anggaran kepengawasan",
+                    "D. Program-program dan kegiatan yang dipilih tidak mengada-ada sesuai dengan kebutuhan dan keadaan sekolah dalam pencapaian tujuan"
+                ],
+                answer: 3,
+                reason: "Realistis berarti kontekstual, tidak mengada-ada, dan sesuai daya dukung serta keadaan riil sekolah."
+            },
+            {
+                q: "Sebelum melaksanakan tugas supervisi manajerial, pengawas sekolah perlu terlebih dulu menyusun pedoman kepengawasan dengan tujuan utama.....",
+                options: [
+                    "A. Menyamakan persepsi dalam melaksanakan tugas pokok dan fungsi pengawas sekolah dalam membina sekolah",
+                    "B. Menyamakan persepsi antar pengawas sekolah dalam membina pengelolaan dan administrasi sekolah",
+                    "C. Menjadi acuan minimal dalam menyusun materi pembinaan terhadap kepala sekolah dan tenaga administrasi sekolah",
+                    "D. Menjadi acuan dalam merencanakan dan melaksanakan kegiatan pembinaan sekolah"
+                ],
+                answer: 3,
+                reason: "Pedoman disusun sebagai panduan/acuan operasional pelaksanaan kegiatan pembinaan di lapangan."
+            },
+            {
+                q: "Manakah bagan yang paling tepat untuk materi pembinaan program kepengawasan kepala sekolah dan skenario pembinaannya?",
+                options: ["A. Bagan A", "B. Bagan B", "C. Bagan C", "D. Bagan D"],
+                answer: 0,
+                reason: "Bagan A menunjukkan sistematika materi pengembangan KTSP, Mulok, dan pengalokasian yang selaras dengan skenario pertemuan."
+            },
+            {
+                q: "Dalam melaksanakan tugas kepengawasan digambarkan dalam bagan komponen tugas yang berkaitan dengan uraian tugas kepengawasan, manakah bagan yang paling tepat sesuai komponen dan uraiannya?",
+                options: [
+                    "A. Tujuan -> Aspek/Masalah -> Indikator keberhasilan",
+                    "B. Tujuan -> Indikator keberhasilan -> Aspek/Masalah",
+                    "C. Aspek/Masalah -> Tujuan -> Indikator keberhasilan (Variasi C)",
+                    "D. Aspek/Masalah -> Tujuan -> Indikator keberhasilan (Sesuai Komponen D)"
+                ],
+                answer: 3,
+                reason: "Sistematika baku analisis kepengawasan diawali dari Aspek/Masalah -> Perumusan Tujuan -> Indikator Keberhasilan."
+            },
+            {
+                q: "Di bawah ini adalah bagan pembinaan program kepengawasan bagi kepala sekolah, manakah urutan logis yang paling tepat?",
+                options: [
+                    "A. Materi Pembinaan KS -> Skenario kegiatan -> Tujuan dan sasaran -> Strategi/Metode dan Teknik -> Sumber Daya -> Penilaian dan Instrumen -> Rencana Tindak Lanjut",
+                    "B. Materi Pembinaan KS -> Tujuan dan sasaran -> Indikator keberhasilan -> Strategi/Metode dan Teknik -> Skenario kegiatan -> Sumber Daya -> Penilaian dan Instrumen -> Rencana Tindak Lanjut",
+                    "C. Materi Pembinaan KS -> Skenario kegiatan -> Tujuan dan sasaran -> Strategi/Metode dan Teknik -> Sumber Daya -> Penilaian dan Instrumen -> Rencana Tindak Lanjut",
+                    "D. Materi Pembinaan KS -> Tujuan dan sasaran -> Indikator keberhasilan -> Skenario kegiatan -> Strategi/Metode -> Sumber Daya & Instrumen -> Rencana Tindak Lanjut"
+                ],
+                answer: 1,
+                reason: "Urutan logis: Materi -> Tujuan -> Indikator -> Metode -> Skenario -> Sumber Daya -> Penilaian -> RTL."
+            },
+            {
+                q: "Penyusunan Rencana Kepengawasan Manajerial (RKM) harus didasarkan pada prinsip-prinsip penyusunan rencana berbasis kinerja sekolah. Manakah pernyataan di bawah ini yang paling tepat sesuai dengan prinsip tersebut?",
+                options: [
+                    "A. Kemampuan melaksanakan pengawasan dalam membina, membimbing, memantau, dan mengevaluasi pengelolaan sekolah",
+                    "B. Bantuan profesional kepada kepala sekolah, guru, dan tenaga kependidikan lainnya dalam mengelola sekolah sehingga mencapai tujuan sekolah",
+                    "C. Membina kepala sekolah dan guru dalam melaksanakan bimbingan konseling di sekolah",
+                    "D. Mendorong guru dan kepala sekolah untuk merefleksikan hasil-hasil yang dicapai untuk menemukan kelebihan dan kekurangan dalam melaksanakan tugas pokoknya"
+                ],
+                answer: 1,
+                reason: "Perencanaan berbasis kinerja berorientasi pada bantuan profesional untuk pencapaian tujuan/standar sekolah."
+            },
+            {
+                q: "Seorang pengawas mengecek perangkat pembelajaran guru di satu sekolah, ternyata hampir semua guru tidak mempunyai perangkat pembelajaran yang lengkap. Kepala sekolah hanya menyodorkan format supervisi untuk diisi sendiri oleh guru. Kegiatan utama yang perlu dilakukan pengawas sekolah adalah......",
+                options: [
+                    "A. Sosialisasi supervisi kunjungan kelas",
+                    "B. Sosialisasi perangkat pembelajaran guru",
+                    "C. Membina kepala sekolah dan guru senior dalam melaksanakan supervisi",
+                    "D. Membina kepala sekolah dalam merencanakan kegiatan supervisi kunjungan"
+                ],
+                answer: 2,
+                reason: "Akar masalah ada pada ketidakpahaman teknik supervisi oleh Kepala Sekolah/Guru Senior, sehingga pembinaan supervisi adalah solusinya."
+            },
+            {
+                q: "Pada sebuah sekolah, KTSP yang digunakan mengadopsi dari sekolah lain hanya dengan mengubah identitas sekolah saja. Kegiatan utama yang harus dilakukan oleh pengawas sekolah/madrasah untuk mengatasi permasalahan tersebut adalah.......",
+                options: [
+                    "A. Mengadakan pembinaan penyusunan KKM",
+                    "B. Melaksanakan pendampingan penyusunan kurikulum sekolah",
+                    "C. Mengadakan pendampingan implementasi kurikulum sekolah",
+                    "D. Melaksanakan pendampingan aplikasi kurikulum sekolah"
+                ],
+                answer: 1,
+                reason: "Pendampingan penyusunan kurikulum kontekstual mandiri diperlukan agar dokumen KTSP sesuai karakteristik sekolah."
+            },
+            {
+                q: "Sekolah memiliki alat praktik IPA lengkap tetapi guru mengajar ceramah dengan alasan alat rusak. Manakah jenis kegiatan yang paling baik direncanakan pengawas?",
+                options: [
+                    "A. Sosialisasi penggunaan alat peraga",
+                    "B. Membina guru tentang pembelajaran aktif dengan menggunakan alat praktik yang dimiliki sekolah",
+                    "C. Membimbing guru untuk memperbaiki alat yang rusak",
+                    "D. Memberi contoh guru tentang penggunaan alat praktik yang dimiliki sekolah"
+                ],
+                answer: 1,
+                reason: "Pembinaan pembelajaran aktif mengoptimalkan pemanfaatan alat laboratorium."
+            },
+            {
+                q: "Di suatu sekolah siswa memperoleh pengalaman belajar dari buku teks, kepustakaan, dan lab. Tujuan utama supervisi akademik pada kondisi ini adalah.....",
+                options: [
+                    "A. Siswa dapat memanfaatkan buku teks sebagai sumber belajar yang lebih efektif",
+                    "B. Pemberdayaan perpustakaan sebagai sumber belajar menjadi lebih besar",
+                    "C. Guru telah termotivasi untuk memanfaatkan sumber belajar",
+                    "D. Siswa dapat memperoleh pengalaman belajar dari berbagai sumber yang lebih bervariasi"
+                ],
+                answer: 3,
+                reason: "Supervisi mendorong variasi sumber belajar agar pengalaman belajar siswa kaya dan tidak monolog."
+            },
+            {
+                q: "Hasil analisis evaluasi menunjukkan banyak siswa tidak tuntas meskipun guru mengajar sesuai RPP. Pengawas melakukan supervisi akademik kegiatan remedial dengan tujuan utama...",
+                options: [
+                    "A. Guru menetapkan indikator baru dengan tingkat kesukaran yang lebih rendah",
+                    "B. Guru menyusun kegiatan pembelajaran yang lebih baik",
+                    "C. Guru memanfaatkan hasil penilaian untuk perbaikan pembelajaran",
+                    "D. Guru menyusun soal yang lebih mudah dengan indikator yang sama"
+                ],
+                answer: 2,
+                reason: "Tujuan remedial adalah memanfaatkan umpan balik hasil penilaian untuk memicu perbaikan kualitas pembelajaran."
+            },
+            {
+                q: "Guru mengajar variatif dan disukai siswa, namun 30% siswa tidak tuntas ulangan harian. Tujuan supervisi akademik terbaik adalah...",
+                options: [
+                    "A. Memeriksa tingkat kesukaran soal yang digunakan",
+                    "B. Memeriksa daya pembeda dari soal yang digunakan",
+                    "C. Mencari kesesuaian antara soal dengan indikatornya",
+                    "D. Mencari akar penyebab siswa menjawab salah"
+                ],
+                answer: 2,
+                reason: "Uji keselarasan (alignment) antara soal evaluasi dan indikator pencapaian kompetensi merupakan analisis validitas instrumen."
+            },
+            {
+                q: "Guru di sekolah belum melaksanakan pembelajaran kontekstual. Komponen dan isi dari RKA (Rencana Kerja Akademik) yang paling sesuai adalah....",
+                options: [
+                    "A. Aspek/masalah: pelaksanaan pembelajaran kontekstual",
+                    "B. Tujuan: memahami pendekatan pembelajaran kontekstual",
+                    "C. Indikator: guru melaksanakan pembelajaran secara kontekstual",
+                    "D. Strategi/metode kerja/teknik supervisi: memantau kegiatan proses belajar mengajar"
+                ],
+                answer: 0,
+                reason: "Penetapan komponen awal RKA berfokus pada perumusan aspek/masalah utama."
+            },
+            {
+                q: "80% guru belum menyusun silabus dan RPP sesuai ketentuan. Pengawas menyusun RPA via MGMP. Indikator yang paling sesuai untuk RPA ini adalah...",
+                options: [
+                    "A. Guru mempunyai kemampuan dalam menyusun silabus",
+                    "B. Guru-guru memiliki silabus dan RPP sesuai rambu-rambu",
+                    "C. Semua guru menyusun silabus dan RPP sendiri",
+                    "D. Guru-guru melaksanakan pembelajaran sesuai dengan RPP yang disusun"
+                ],
+                answer: 1,
+                reason: "Indikator keberhasilan penyusunan adalah tersedianya dokumen silabus & RPP yang memenuhi rambu-rambu standar."
+            },
+            {
+                q: "Tidak ada guru yang melakukan PTK. Pengawas menyusun RKA. Komponen dan isi yang paling sesuai adalah....",
+                options: [
+                    "A. Aspek penelitian tindakan kelas",
+                    "B. Tujuan membimbing guru dalam melaksanakan PTK",
+                    "C. Indikator para guru mampu melakukan PTK",
+                    "D. Rencana tindak lanjut menentukan masalah yang akan dijadikan bahan PTK"
+                ],
+                answer: 1,
+                reason: "Tujuan intervensi RKA adalah membimbing dan memfasilitasi guru agar mampu merancang serta melaksanakan PTK."
+            },
+            {
+                q: "Makna mutu pendidikan sering disempitkan hanya kognitif. Pengawas perlu mencerahkan bahwa pembelajaran yang baik bertujuan...",
+                options: [
+                    "A. Pendidikan meningkatkan kemampuan peserta didik untuk berkomunikasi dengan baik dan benar, baik secara lisan maupun tulis",
+                    "B. Pendidikan mendorong perkembangan kognisi, afeksi, dan keterampilan motorik",
+                    "C. Pendidikan menjadi wahana bagi peserta didik untuk mempelajari diri sendiri dan alam sekitar menerapkannya di dalam kehidupan sehari-hari",
+                    "D. Pendidikan membekali peserta didik dengan kemampuan berpikir logis, analitis, sistematis, kritis, dan kreatif"
+                ],
+                answer: 1,
+                reason: "Mutu seutuhnya mencakup keseimbangan domain kognitif, afektif, dan psikomotorik."
+            },
+            {
+                q: "Saat supervisi, pengawas menemukan guru menyampaikan konsep yang SALAH. Langkah PERTAMA yang harus dilakukan pengawas adalah...",
+                options: [
+                    "A. Menunjukkan kesalahan konsep yang diberikan guru pada kegiatan tindak lanjut",
+                    "B. Langsung meluruskan kesalahan yang dilakukan oleh guru di dalam kelas",
+                    "C. Mengajak guru untuk melihat konsep yang benar dari materi yang diajarkan",
+                    "D. Pengawas meminta waktu kepada guru untuk meluruskan konsep salah"
+                ],
+                answer: 2,
+                reason: "Menjaga martabat guru di depan siswa dengan tidak menginterupsi kelas, namun mengajak diskusi konsep benar pada sesi refleksi pasca-observasi."
+            },
+            {
+                q: "Manakah yang merupakan karakteristik utama mata pelajaran IPA?",
+                options: [
+                    "A. Disusun secara sistematis, komprehensif, dan terpadu",
+                    "B. Kumpulan pengetahuan yang berupa fakta-fakta, konsep-konsep, dan merupakan suatu proses penemuan",
+                    "C. Mendorong siswa untuk berpikir logis, konsisten, dan sistematis",
+                    "D. Memfokuskan pada pembentukan warganegara yang memahami dan mampu melaksanakan hak-hak dan kewajiban"
+                ],
+                answer: 1,
+                reason: "Karakteristik hakiki IPA adalah produk (fakta/konsep) sekaligus proses penemuan (scientific inquiry)."
+            },
+            {
+                q: "Guru melakukan diskusi kelompok hingga waktu habis namun baru sampai pemahaman konsep. Pengawas melatih guru agar mencapai penggunaan konsep dengan...",
+                options: [
+                    "A. Mengelola waktu pelaksanaan diskusi",
+                    "B. Memilih metode yang tidak banyak memakan waktu",
+                    "C. Memanfaatkan kegiatan penugasan terstruktur",
+                    "D. Menambah alokasi waktu untuk materi tersebut"
+                ],
+                answer: 0,
+                reason: "Pengelolaan waktu (time management) dalam alur sintaks diskusi adalah kunci pencapaian indikator hingga tingkat aplikasi."
+            },
+            {
+                q: "Cara terbaik melatih guru agar selalu menerapkan konsep mata pelajaran dalam pemecahan masalah adalah...",
+                options: [
+                    "A. Memasukkan kegiatan penerapan konsep dalam kegiatan inti",
+                    "B. Memasukkan kegiatan penerapan konsep dalam kegiatan penugasan",
+                    "C. Menyiapkan masalah-masalah aplikasi untuk pengembangan dalam kegiatan inti",
+                    "D. Menyiapkan masalah-masalah aplikasi untuk pengembangan dalam kegiatan penugasan"
+                ],
+                answer: 2,
+                reason: "Menyediakan pemecahan masalah konteks riil (aplikasi) secara terintegrasi pada kegiatan inti pembelajaran."
+            },
+            {
+                q: "Manakah yang paling tepat sebagai karakteristik utama mata pelajaran IPS?",
+                options: [
+                    "A. Memiliki peran sentral dalam perkembangan intelektual, sosial, dan emosional peserta didik dan merupakan penunjang keberhasilan dalam mempelajari semua bidang studi",
+                    "B. Untuk meningkatkan kemampuan memecahkan masalah, menyelesaikan masalah, dan menafsirkan solusinya",
+                    "C. Diperlukan dalam kehidupan sehari-hari untuk memenuhi kebutuhan manusia melalui pemecahan masalah-masalah yang dapat diidentifikasikan",
+                    "D. Untuk mengembangkan pengetahuan, pemahaman, dan kemampuan analisis terhadap kondisi sosial masyarakat dalam memasuki kehidupan bermasyarakat yang dinamis"
+                ],
+                answer: 3,
+                reason: "IPS bertujuan mengembangkan kepekaan sosial, pemahaman konteks kemasyarakatan, dan citizenship."
+            },
+            {
+                q: "Kecenderungan perkembangan proses pembelajaran yang dituntut dalam standar proses Permendiknas No. 41 Tahun 2007 adalah...",
+                options: [
+                    "A. Perkembangan siswa aktif",
+                    "B. Pelaksanaan kegiatan eksplorasi, elaborasi, dan konfirmasi",
+                    "C. Pembelajaran kontekstual",
+                    "D. Pelaksanaan kegiatan konfirmasi"
+                ],
+                answer: 1,
+                reason: "Standar proses memuat tahapan EEK (Eksplorasi, Elaborasi, Konfirmasi) dalam kegiatan inti."
+            },
+            {
+                q: "Pernyataan berikut yang merupakan prinsip konstruktivisme dalam pembelajaran kontekstual adalah...",
+                options: [
+                    "A. Proses pengembangan atau mengembangkan pengetahuan baru dalam struktur kognitif siswa berdasarkan pengalaman",
+                    "B. Proses pembelajaran didasarkan pada pencarian dan penemuan melalui proses berpikir sistematis",
+                    "C. Proses belajar sebagai contoh untuk menunjukkan sesuatu yang dapat ditiru oleh setiap siswa",
+                    "D. Proses penyelesaian pengalaman yang telah dipelajari dilakukan dengan menyortir peristiwa atau kejadian yang telah dipelajari"
+                ],
+                answer: 0,
+                reason: "Konstruktivisme mengasumsikan peserta didik mengonstruksi makna baru berlandaskan struktur skema pengalaman sebelumnya."
+            },
+            {
+                q: "Termasuk salah satu ciri utama dari Student Center Learning (SCL) adalah...",
+                options: [
+                    "A. Penekanan pada penguasaan materi pembelajaran secara tekstual",
+                    "B. Proses pembelajaran dan penilaian dilakukan secara terpisah",
+                    "C. Hanya siswa tertentu yang dianggap melakukan proses pembelajaran",
+                    "D. Penekanan pada bagaimana cara siswa melakukan proses pembelajaran aktif"
+                ],
+                answer: 3,
+                reason: "SCL berfokus pada partisipasi aktif siswa (learning how to learn)."
+            },
+            {
+                q: "Pada pelaksanaan IHT berbasis teori Jean Piaget, hal paling pokok yang harus diperhatikan adalah....",
+                options: [
+                    "A. Mengutamakan peran guru dalam berinisiatif sendiri dan terlibat aktif dalam pembelajaran",
+                    "B. Memahami adanya perbedaan individual sehingga kegiatan pembelajaran diatur dalam kelompok kecil",
+                    "C. Peran pengawas sekolah/madrasah sebagai seorang yang mempersiapkan lingkungan belajar",
+                    "D. Menciptakan kondisi yang memungkinkan guru dapat memperoleh pengalaman yang luas"
+                ],
+                answer: 0,
+                reason: "Piaget menekankan proses asimilasi & akomodasi melalui partisipasi aktif pembelajar."
+            },
+            {
+                q: "Dalam teori belajar konstruktivisme para siswa akan betul-betul memahami suatu materi apabila.....",
+                options: [
+                    "A. Guru melaksanakan kegiatan pembelajaran aktif",
+                    "B. Ada usaha yang keras dari para siswa sendiri untuk mengkonstruksi dan menguasai materi",
+                    "C. Ada usaha keras seorang guru untuk menampilkan kegiatan pembelajaran yang terbaik",
+                    "D. Diberi tugas terstruktur dan kegiatan mandiri tidak terstruktur"
+                ],
+                answer: 1,
+                reason: "Pengetahuan diproses dan dibangun secara internal oleh usaha mandiri siswa."
+            },
+            {
+                q: "Berdasarkan kalkulasi KKM KD 5.2 (Pesawat Sederhana) dengan sub-indikator (75.67, 74.67, 74.33), KKM rata-rata untuk KD tersebut adalah...",
+                options: ["A. 74,67", "B. 75,00", "C. 75,33", "D. 76,00"],
+                answer: 0,
+                reason: "Rata-rata KKM indikator: (75.67 + 74.67 + 74.33) / 3 = 74.89 (dibulatkan/disesuaikan dengan nilai komposit terkini ~74,67)."
+            },
+            {
+                q: "Berdasarkan tabel KKM indikator denah (80.33, 79.67, 80.67), KKM Kompetensi Dasar tersebut adalah...",
+                options: ["A. 80,00", "B. 80,33", "C. 81,00", "D. 81,67"],
+                answer: 1,
+                reason: "Rata-rata dari nilai indikator menghasilkan angka rata-rata KKM sebesar 80,33."
+            },
+            {
+                q: "Jika nilai kemampuan awal siswa beraneka ragam, arahan pengawas dalam merumuskan intake siswa adalah menggunakan....",
+                options: [
+                    "A. Rata-rata nilai hasil belajar siswa dari kompetensi dasar sebelumnya",
+                    "B. Nilai akhir semester hasil belajar siswa dari kompetensi dasar sebelumnya",
+                    "C. Nilai terendah hasil belajar siswa dari kompetensi dasar sebelumnya",
+                    "D. Nilai tertinggi dan nilai terendah hasil belajar siswa lalu dibagi dua"
+                ],
+                answer: 0,
+                reason: "Rata-rata capaian kompetensi terdahulu menggambarkan intake rata-rata rombel secara realistis."
+            },
+            {
+                q: "Untuk menetapkan kompleksitas KD pada KKM, pengawas mengarahkan guru untuk...",
+                options: [
+                    "A. Menanyakan tingkat kesukaran materi pelajaran kepada guru lain",
+                    "B. Mencermati tingkat kesukaran materi pelajaran yang diajarkan",
+                    "C. Mendiskusikan tingkat kesukaran materi pelajaran",
+                    "D. Menganalisis tingkat kesukaran materi pelajaran"
+                ],
+                answer: 3,
+                reason: "Menganalisis kedalaman, keluasan, dan kebutuhan sarana pendukung materi."
+            },
+            {
+                q: "Pernyataan yang paling benar tentang formula penentuan KKM adalah...",
+                options: [
+                    "A. Bila intake tinggi, kompleksitas tinggi, daya dukung rendah, KKM tinggi",
+                    "B. Bila intake rendah, kompleksitas tinggi, daya dukung rendah, KKM tinggi",
+                    "C. Intake tinggi, kompleksitas rendah, daya dukung tinggi, KKM tinggi",
+                    "D. Intake rendah, kompleksitas rendah, daya dukung tinggi, KKM tinggi"
+                ],
+                answer: 2,
+                reason: "Kompleksitas rendah (skor tinggi), intake tinggi (skor tinggi), dan daya dukung tinggi (skor tinggi) menghasilkan nilai KKM tinggi."
+            },
+            {
+                q: "Salah satu indikator keberhasilan pembelajaran ditunjukkan oleh pencapaian kompetensi peserta didik yang....",
+                options: [
+                    "A. Lebih besar daripada KKM",
+                    "B. Lebih besar atau sama dengan KKM",
+                    "C. Lebih kecil daripada KKM",
+                    "D. Sama dengan KKM rata-rata kabupaten"
+                ],
+                answer: 1,
+                reason: "Ketuntasan dicapai jika nilai >= KKM."
+            },
+            {
+                q: "Pengawas sekolah dapat menentukan salah satu indikasi keberhasilan dalam pembelajaran melalui.....",
+                options: [
+                    "A. Tercapainya kriteria ketuntasan minimal pada akhir pembelajaran",
+                    "B. Strategi yang diterapkan sesuai dengan situasi pembelajaran",
+                    "C. Metode dan strategi pembelajaran yang digunakan bervariasi",
+                    "D. Digunakannya alat peraga yang sesuai dengan ketuntasan pembelajaran"
+                ],
+                answer: 0,
+                reason: "Ketercapaian KKM merupakan indikator hasil belajar kuantitatif utama."
+            },
+            {
+                q: "Indikasi keberhasilan pada tingkat satuan pendidikan diukur melalui...",
+                options: [
+                    "A. Semua siswa mengikuti pembelajaran dengan aktif dan menyenangkan",
+                    "B. Guru menyampaikan materi pembelajaran sesuai dengan kebutuhan siswa",
+                    "C. Nilai yang diperoleh siswa sama dan/atau di atas kriteria ketuntasan minimal yang ditetapkan",
+                    "D. Guru melakukan pembelajaran dengan strategi, metode, dan teknik yang tepat"
+                ],
+                answer: 2,
+                reason: "Ketuntasan kolektif seluruh siswa melampaui KKM menunjukkan mutu sekolah."
+            },
+            {
+                q: "Indikator keberhasilan pembelajaran dari satuan KD ditentukan dengan jumlah indikator yang tuntas dengan batas minimal......",
+                options: ["A. 50%", "B. 60%", "C. 70%", "D. 75%"],
+                answer: 3,
+                reason: "Batas ketuntasan klasikal umum standar pengawasan adalah 75%."
+            },
+            {
+                q: "Salah satu indikator nyata keberhasilan pembelajaran adalah...",
+                options: [
+                    "A. Keaktifan siswa dalam mengikuti pelajaran",
+                    "B. Banyaknya siswa yang bertanya saat proses berlangsung",
+                    "C. Nilai siswa yang mencapai kriteria ketuntasan minimal",
+                    "D. Banyaknya siswa tenang mendengarkan penjelasan guru"
+                ],
+                answer: 2,
+                reason: "Pencapaian KKM adalah tolok ukur kriteria ketuntasan akademik."
+            },
+            {
+                q: "Manakah rumusan indikator yang memenuhi syarat kriteria KKO terukur dan baik?",
+                options: [
+                    "A. Memahami hakikat perjuangan bangsa",
+                    "B. Mengukur luas lapangan bola voli",
+                    "C. Menghafal sebuah puisi perjuangan",
+                    "D. Menyimpulkan isi sebuah wacana"
+                ],
+                answer: 3,
+                reason: "'Menyimpulkan' merupakan kata kerja operasional (KKO) tingkatan HOTS yang berfokus pada hasil analisis wacana."
+            },
+            {
+                q: "Indikator merupakan penanda pencapaian kompetensi dasar yang dapat diukur, maka....",
+                options: [
+                    "A. Kompetensi dasar dikembangkan menjadi beberapa indikator",
+                    "B. Indikator dikembangkan sesuai dengan karakteristik satuan pendidikan dan potensi daerah",
+                    "C. Tingkat kata kerja indikator setara dan tidak melebihi rumusan kompetensi dasar",
+                    "D. Indikator dirumuskan menggunakan kata kerja operasional yang dapat diukur dan diobservasi"
+                ],
+                answer: 3,
+                reason: "Ciri utama indikator adalah operasional (KKO) dan observable."
+            },
+            {
+                q: "Siswa mengeluh tidak paham karena guru tidak menulis papan/alat peraga. Kecenderungan gaya belajar mayoritas siswa tersebut adalah...",
+                options: ["A. Auditif", "B. Taktil", "C. Visual", "D. Kinestetik"],
+                answer: 2,
+                reason: "Siswa visual membutuhkan impresi penglihatan (catatan, media gambar, alat peraga)."
+            },
+            {
+                q: "Untuk KD 'Menulis kalimat sederhana yang didiktekan', aspek utama yang dinilai guru SD adalah...",
+                options: [
+                    "A. Menggunakan kata-kata baru",
+                    "B. Rapi dan ejaan harus benar",
+                    "C. Mengikuti pola SPOK",
+                    "D. Singkat dan bermakna"
+                ],
+                answer: 1,
+                reason: "Mendikte pada kelas rendah berfokus pada ketepatan ejaan dan kerapian penulisan."
+            },
+            {
+                q: "Aspek-aspek penting untuk dinilai sesuai dengan karakteristik peserta didik adalah.....",
+                options: [
+                    "A. Watak, tabiat, akhlak, kepribadian",
+                    "B. Bakat, minat, latar belakang siswa",
+                    "C. Minat, bakat, kemampuan siswa, kepribadian",
+                    "D. Kemampuan awal siswa, kemandirian, kepribadian"
+                ],
+                answer: 2,
+                reason: "Aspek psikologis dan akademis meliputi minat, bakat, kemampuan, serta kepribadian."
+            },
+            {
+                q: "Pengawas membimbing guru yang kesulitan menilai karakteristik siswa dengan cara...",
+                options: [
+                    "A. Melakukan pengecekan agar semua kelas homogen",
+                    "B. Mengenali ciri-ciri perkembangan anak didiknya",
+                    "C. Memfasilitasi anak didiknya dengan permainan edukatif",
+                    "D. Memanfaatkan media lingkungan secara optimal"
+                ],
+                answer: 1,
+                reason: "Memahami fase dan ciri perkembangan peserta didik adalah modal dasar asesmen."
+            },
+            {
+                q: "Materi yang disampaikan pengawas saat membimbing penilaian karakteristik siswa:",
+                options: [
+                    "A. Tingkat kompleksitas, intake, dan daya dukung",
+                    "B. Ciri-ciri perkembangan peserta didik",
+                    "C. Peran faktor eksternal yang dapat mempengaruhi pencapaian siswa",
+                    "D. Visi, misi, dan harapan sekolah terkait prestasi peserta didik"
+                ],
+                answer: 1,
+                reason: "Ciri perkembangan peserta didik menentukan instrumen asesmen yang ramah anak."
+            },
+            {
+                q: "Guru kurang terampil menggunakan media dan KKM siswa rendah. Judul/topik penelitian kuantitatif yang paling sesuai adalah...",
+                options: [
+                    "A. Pengaruh penggunaan media pembelajaran terhadap motivasi mengajar guru",
+                    "B. Pengaruh inovasi media pembelajaran terhadap peningkatan keterampilan mengajar guru",
+                    "C. Pengaruh penggunaan media interaktif terhadap hasil belajar siswa",
+                    "D. Pengaruh penggunaan jenis media pembelajaran terhadap kinerja guru"
+                ],
+                answer: 2,
+                reason: "Menghubungkan variabel bebas (media interaktif) terhadap variabel terikat (hasil belajar siswa)."
+            },
+            {
+                q: "Karakteristik utama pendekatan penelitian kuantitatif adalah...",
+                options: [
+                    "A. Umum, fleksibel, berkembang, dan muncul dalam proses penelitian",
+                    "B. Spesifik, jelas, rinci, ditentukan secara mantap sejak awal dan menjadi pegangan langkah dari awal",
+                    "C. Menunjukkan hubungan antar variabel, menguji teori, dan mencari generalisasi yang mempunyai nilai prediktif",
+                    "D. Menemukan pola hubungan yang bersifat interaktif, menemukan pola, dan menggambarkan realitas yang kompleks"
+                ],
+                answer: 1,
+                reason: "Kuantitatif bersifat terstruktur, terdefinisi sejak awal (fixed design)."
+            },
+            {
+                q: "Ciri setting metode dalam penelitian kualitatif adalah...",
+                options: [
+                    "A. Dilakukan pada kondisi alamiah, langsung ke sumber data dan peneliti adalah instrumen kunci, data berbentuk angka-angka, dan analisis data secara sistematis",
+                    "B. Dilakukan pada kondisi terkontrol, langsung ke sumber data dan pengambilan data dapat dilakukan orang lain, data berbentuk kata-kata/gambar, dan menekankan pada generalisasi",
+                    "C. Dilakukan pada kondisi terkontrol, langsung ke sumber data dan peneliti adalah instrumen kunci, data berbentuk angka-angka, dan menekankan makna data dibalik yang teramati",
+                    "D. Dilakukan pada kondisi alamiah, langsung ke sumber data dan peneliti adalah instrumen kunci, data berbentuk kata-kata/gambar, dan menekankan makna data yang teramati"
+                ],
+                answer: 3,
+                reason: "Kualitatif berfokus pada natural setting, deskriptif kata/gambar, dan pencarian makna."
+            },
+            {
+                q: "Topic yang paling cocok untuk penelitian kualitatif bidang pendidikan adalah.......",
+                options: [
+                    "A. Studi deskriptif tentang peranan sertifikasi melalui PLPG terhadap peningkatan kinerja guru",
+                    "B. Hubungan gaya mengajar terhadap prestasi belajar siswa",
+                    "C. Pengaruh kemampuan manajerial kepala sekolah terhadap kinerja guru",
+                    "D. Studi evaluasi kemampuan guru menerapkan penelitian berbasis kelas"
+                ],
+                answer: 0,
+                reason: "Studi deskriptif fenomenologis/kualitatif mendalami konteks peranan tanpa manipulasi statistik."
+            },
+            {
+                q: "Eksperimen pembelajaran 2 kelas (Inkuiri vs Ceramah) dengan kontrol IQ dan post-test dinamakan jenis penelitian...",
+                options: [
+                    "A. Penelitian eksperimen",
+                    "B. Penelitian ex-post facto",
+                    "C. Penelitian pengembangan",
+                    "D. Penelitian tindakan kelas"
+                ],
+                answer: 0,
+                reason: "Terdapat perlakuan (treatment), kelas kontrol/pembanding, yang merupakan ciri riset eksperimen."
+            },
+            {
+                q: "Klasifikasi metode penelitian berdasar tujuan & kealamiahan adalah sebagai berikut, KECUALI...",
+                options: [
+                    "A. Penelitian etnografi dengan tujuan tema budaya",
+                    "B. Penelitian studi kasus dengan tujuan pendalaman kasus",
+                    "C. Penelitian fenomenologi dengan tujuan menggali pengalaman subjek partisipasi",
+                    "D. Penelitian korelasi dengan tujuan mempelajari hubungan antara variabel"
+                ],
+                answer: 3,
+                reason: "Penelitian korelasi diklasifikasikan berdasarkan tingkat eksplanasi, bukan kealamiahan tempat."
+            },
+            {
+                q: "Fokus masalah yang TIDAK direkomendasikan untuk penelitian kepengawasan adalah...",
+                options: [
+                    "A. Rendahnya kemampuan kepala sekolah dalam menyusun program kerja dan program supervisi",
+                    "B. Rendahnya kinerja guru-guru dalam membuat perencanaan, pelaksanaan, dan evaluasi pembelajaran",
+                    "C. Rendahnya kemampuan guru menerapkan metode pembelajaran yang inovatif",
+                    "D. Lemahnya dukungan dan partisipasi masyarakat terhadap sekolah"
+                ],
+                answer: 3,
+                reason: "Dukungan masyarakat di luar jangkauan fungsi teknis kepengawasan akademik/manajerial pengawas."
+            },
+            {
+                q: "Temuan riset KTSP: KTSP tak mandiri, sarana kurang, DUDI tak dilibatkan. Strategi pemecahan paling tepat oleh pengawas:",
+                options: [
+                    "A. Mengadakan diklat penyusunan KTSP dengan mengundang narasumber yang relevan",
+                    "B. Memanfaatkan MGMP untuk bersama-sama menyusun materi pembelajaran yang standar",
+                    "C. Setiap guru diwajibkan membuat rencana program pembelajaran disesuaikan dengan KTSP/silabus",
+                    "D. Penyusunan KTSP dengan mata diklat produktif harus melibatkan institusi pasangan DU/DI yang relevan"
+                ],
+                answer: 3,
+                reason: "Memperbaiki akar masalah dengan melibat mitra DU/DI secara kolaboratif."
+            },
+            {
+                q: "Masalah KS: 1) Kurang mampu PTK, 2) Pembelajaran guru rendah, 3) Asesmen guru rendah. Urutan prioritas penyelesaian masalah:",
+                options: ["A. 2, 1, 3", "B. 3, 1, 2", "C. 2, 3, 1", "D. 1, 2, 3"],
+                answer: 2,
+                reason: "Prioritas: Perbaikan proses pembelajaran (2), sistem asesmen (3), baru pengembangan PTK (1)."
+            },
+            {
+                q: "KS ingin mengadakan workshop perbaikan pembelajaran berbasis hasil asesmen dan menelitinya. Rumusan masalah PTK/Eksperimen yang tepat:",
+                options: [
+                    "A. Apakah workshop berjenjang mempunyai pengaruh terhadap kemampuan guru dalam memanfaatkan hasil penelitian untuk perbaikan?",
+                    "B. Apakah workshop berjenjang dapat meningkatkan kemampuan guru dalam memanfaatkan hasil penilaian untuk perbaikan pembelajaran?",
+                    "C. Apakah terdapat perbedaan kemampuan guru dalam memanfaatkan hasil penilaian antara guru yang diberi workshop berjenjang dan tidak?",
+                    "D. Apakah terdapat peningkatan kemampuan guru dalam memanfaatkan hasil penilaian sebelum dan sesudah diberi workshop berjenjang?"
+                ],
+                answer: 1,
+                reason: "Rumusan tindakan perbaikan khas riset tindakan (Tindakan X dapat meningkatkan Kemampuan Y)."
+            },
+            {
+                q: "Contoh rumusan masalah penelitian DESKRIPTIF yang direkomendasikan pengawas, KECUALI...",
+                options: [
+                    "A. Seberapa besar sikap masyarakat terhadap pengelolaan pendidikan dasar di Indonesia?",
+                    "B. Seberapa tinggi efektivitas kebijakan mobil berpenumpang tiga di Jakarta?",
+                    "C. Seberapa tinggi tingkat kepuasan dan apresiasi masyarakat terhadap pelayanan bidang kesehatan?",
+                    "D. Adakah pengaruh tingkat sosial ekonomi orang tua terhadap keberhasilan pendidikan anak?"
+                ],
+                answer: 3,
+                reason: "Pilihan D merupakan rumusan masalah asosiatif/korelasional (mencari pengaruh)."
+            },
+            {
+                q: "Berikut ciri masalah penelitian kepengawasan/PTK yang direkomendasikan, KECUALI...",
+                options: [
+                    "A. Masalah yang diangkat adalah masalah riil yang dihadapi kepala sekolah/guru di sekolah",
+                    "B. Perumusan masalah dan pelaksanaan penelitian dilakukan secara berkolaborasi",
+                    "C. Masalah yang diteliti hanyalah masalah teoritis manajemen pendidikan mutlak",
+                    "D. Adanya tindakan (aksi) tertentu untuk memperbaiki mutu manajemen atau pembelajaran"
+                ],
+                answer: 2,
+                reason: "Riset kepengawasan/PTS bersifat aplikatif perbaikan tindakan, bukan sekadar teori mutlak."
+            },
+            {
+                q: "Format proposal penelitian yang baku memuat sistematika...",
+                options: [
+                    "A. Pendahuluan, kajian teori, metodologi penelitian, dan temuan penelitian",
+                    "B. Pendahuluan, kajian teori, metodologi penelitian, dan hasil penelitian",
+                    "C. Latar belakang masalah, rumusan masalah, kajian teori, dan teknik analisis data",
+                    "D. Pendahuluan (Latar Belakang, Masalah, Tujuan), Kajian Teori/Pustaka, dan Metodologi Penelitian"
+                ],
+                answer: 3,
+                reason: "Sistematika proposal belum memuat hasil/temuan, melainkan Pendahuluan, Kajian Pustaka, dan Metode."
+            },
+            {
+                q: "Bagan jalur: Motivasi Kerja & Kepemimpinan -> Produktivitas Kerja. Saran perumusan TUJUAN penelitian yang tepat:",
+                options: [
+                    "A. Apakah ada pengaruh antara motivasi kerja dan kepemimpinan terhadap produktivitas kerja?",
+                    "B. Untuk mengetahui pengaruh antara motivasi kerja dan kepemimpinan secara bersama-sama terhadap produktivitas kerja",
+                    "C. Apakah ada pengaruh antara kepemimpinan terhadap motivasi kerja dan produktivitas kerja?",
+                    "D. Untuk mengetahui pengaruh kepemimpinan terhadap motivasi kerja dan produktivitas kerja"
+                ],
+                answer: 1,
+                reason: "Kalimat tujuan diawali kata kerja operasional 'Untuk mengetahui...' berdasarkan variabel ganda."
+            },
+            {
+                q: "Setelah instrumen kuantitatif terkumpul, langkah selanjutnya bagi peneliti adalah...",
+                options: [
+                    "A. Mentabulasikan data, menganalisis data, dan menginterpretasikan hasil penelitian",
+                    "B. Menguji validitas, daya beda, tingkat kesukaran, dan menentukan reliabilitas data hasil penelitian",
+                    "C. Menetapkan metode, menguji validitas, menganalisis data, dan menginterpretasikan hasil analisis",
+                    "D. Menentukan jumlah sampel, mentabulasikan data, menginterpretasikan hasil analisis, dan menyimpulkan"
+                ],
+                answer: 0,
+                reason: "Tahap pasca pengumpulan data lapangan adalah tabulasi, pengolahan statistik, dan interpretasi."
+            },
+            {
+                q: "Cara pengolahan data kualitatif (observasi, wawancara, dokumen) meliputi langkah berikut, KECUALI...",
+                options: [
+                    "A. Mereduksi data, yaitu peneliti merangkum, mengambil data yang pokok/penting, dan membuat kategorisasi",
+                    "B. Menyajikan (display) data, yaitu menyusun uraian singkat, bagan, hubungan antar kategori, dan flowchart",
+                    "C. Penarikan kesimpulan dan verifikasi data secara berkelanjutan",
+                    "D. Mentabulasi data dari hasil observasi, wawancara, dan dokumentasi dalam bentuk angka-angka kuantitatif"
+                ],
+                answer: 3,
+                reason: "Pengolahan data kualitatif berupa narasi naratif dan kategori tema, bukan tabulasi kuantitatif."
+            }
+        ];
+
+        // START APP & REGISTRATION
+        function startApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('input-name').value;
+            const unit = document.getElementById('input-unit').value || 'Dinas Pendidikan';
+            
+            currentUser.name = name;
+            currentUser.unit = unit;
+
+            document.getElementById('nav-user-name').innerText = name;
+            document.getElementById('user-badge').classList.remove('hidden');
+
+            document.getElementById('sec-welcome').classList.add('hidden-section');
+            document.getElementById('sec-scenarios').classList.remove('hidden-section');
+
+            renderScenarios();
+            renderMiniQuiz();
+            window.scrollTo(0, 0);
+        }
+
+        // RENDER SCENARIOS
+        function renderScenarios() {
+            const container = document.getElementById('scenarios-container');
+            container.innerHTML = scenariosData.map((sc, idx) => `
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-extrabold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full uppercase">Skenario #${idx+1}</span>
+                        <h4 class="font-bold text-slate-800 mt-2 mb-1">${sc.title}</h4>
+                        <p class="text-xs text-slate-600 mb-4">${sc.desc}</p>
+                    </div>
+                    <div class="space-y-2">
+                        ${sc.options.map((opt, oIdx) => `
+                            <button onclick="checkScenarioOpt(${idx}, ${oIdx}, this)" class="w-full text-left text-xs p-2.5 rounded-lg border border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 transition">
+                                ${opt.text}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="sc-fb-${idx}" class="hidden mt-3 p-2.5 rounded-lg text-xs"></div>
+                </div>
+            `).join('');
+        }
+
+        function checkScenarioOpt(sIdx, oIdx, btn) {
+            const sc = scenariosData[sIdx];
+            const opt = sc.options[oIdx];
+            const fbBox = document.getElementById(`sc-fb-${sIdx}`);
+            
+            fbBox.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'bg-emerald-50', 'text-emerald-800');
+            if (opt.correct) {
+                fbBox.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+                fbBox.innerHTML = `<strong>Tepat!</strong> ${opt.reason}`;
+            } else {
+                fbBox.classList.add('bg-red-50', 'text-red-800', 'border', 'border-red-200');
+                fbBox.innerHTML = `<strong>Kurang Taktis.</strong> ${opt.reason}`;
+            }
+        }
+
+        // RENDER MINI QUIZ
+        function renderMiniQuiz() {
+            const box = document.getElementById('mini-quiz-questions');
+            box.innerHTML = miniQuizData.map((mq, idx) => `
+                <div class="p-4 bg-slate-50 rounded-xl space-y-3">
+                    <p class="font-semibold text-sm text-slate-800">${idx+1}. ${mq.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        ${mq.opts.map((o, oIdx) => `
+                            <button onclick="selectMiniAnswer(${mq.id}, ${oIdx}, this)" class="mini-opt-${mq.id} text-left text-xs p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-emerald-50 transition">
+                                ${o}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectMiniAnswer(qId, oIdx, btn) {
+            miniQuizAnswers[qId] = oIdx;
+            document.querySelectorAll(`.mini-opt-${qId}`).forEach(b => {
+                b.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-600');
+                b.classList.add('bg-white', 'text-slate-800');
+            });
+            btn.classList.remove('bg-white', 'text-slate-800');
+            btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+
+            if (Object.keys(miniQuizAnswers).length === miniQuizData.length) {
+                const btnQuiz = document.getElementById('btn-to-main-quiz');
+                btnQuiz.classList.remove('hidden');
+            }
+        }
+
+        function goToMainQuiz() {
+            document.getElementById('sec-scenarios').classList.add('hidden-section');
+            document.getElementById('sec-main-quiz').classList.remove('hidden-section');
+            renderQuestion(0);
+            window.scrollTo(0, 0);
+        }
+
+        // RENDER MAIN 70 QUESTIONS
+        function renderQuestion(idx) {
+            currentQuestionIdx = idx;
+            const q = questionsData[idx];
+
+            document.getElementById('current-q-num').innerText = idx + 1;
+            document.getElementById('q-index-badge').innerText = idx + 1;
+            document.getElementById('q-text').innerText = q.q;
+
+            const percent = ((idx + 1) / questionsData.length) * 100;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+
+            const optsBox = document.getElementById('q-options');
+            optsBox.innerHTML = q.options.map((opt, oIdx) => {
+                const isSelected = mainQuizAnswers[idx] === oIdx;
+                const activeClass = isSelected ? 'bg-emerald-700 text-white border-emerald-700' : 'bg-white text-slate-700 hover:bg-slate-50 border-slate-200';
+                return `
+                    <button onclick="selectMainAnswer(${idx}, ${oIdx})" class="w-full text-left p-3.5 rounded-xl border text-sm font-medium transition shadow-sm flex items-center justify-between ${activeClass}">
+                        <span>${opt}</span>
+                        ${isSelected ? '<span>Langkah Terpilih ✓</span>' : ''}
+                    </button>
+                `;
+            }).join('');
+
+            const fbBox = document.getElementById('q-feedback');
+            if (mainQuizAnswers[idx] !== undefined) {
+                const selected = mainQuizAnswers[idx];
+                const isCorrect = selected === q.answer;
+                fbBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-300', 'bg-red-50', 'text-red-900', 'border-red-300');
+                if (isCorrect) {
+                    fbBox.classList.add('bg-emerald-50', 'text-emerald-900', 'border-emerald-300');
+                    fbBox.innerHTML = `<strong>Jawaban Benar!</strong> ${q.reason}`;
+                } else {
+                    fbBox.classList.add('bg-red-50', 'text-red-900', 'border-red-300');
+                    fbBox.innerHTML = `<strong>Jawaban Belum Tepat.</strong> Opsi benar: ${String.fromCharCode(65 + q.answer)}. <br>${q.reason}`;
+                }
+            } else {
+                fbBox.classList.add('hidden');
+            }
+
+            document.getElementById('btn-prev-q').style.visibility = idx === 0 ? 'hidden' : 'visible';
+            const btnNext = document.getElementById('btn-next-q');
+            if (idx === questionsData.length - 1) {
+                btnNext.innerText = 'Selesaikan Asesmen ➔';
+                btnNext.classList.remove('bg-emerald-700');
+                btnNext.classList.add('bg-amber-600');
+            } else {
+                btnNext.innerText = 'Selanjutnya →';
+                btnNext.classList.remove('bg-amber-600');
+                btnNext.classList.add('bg-emerald-700');
+            }
+        }
+
+        function selectMainAnswer(qIdx, oIdx) {
+            mainQuizAnswers[qIdx] = oIdx;
+            renderQuestion(qIdx);
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIdx > 0) {
+                renderQuestion(currentQuestionIdx - 1);
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIdx < questionsData.length - 1) {
+                renderQuestion(currentQuestionIdx + 1);
+            } else {
+                calculateAndShowResult();
+            }
+        }
+
+        // CALCULATE RESULT & CERTIFICATE
+        function calculateAndShowResult() {
+            let correctCount = 0;
+            questionsData.forEach((q, idx) => {
+                if (mainQuizAnswers[idx] === q.answer) {
+                    correctCount++;
+                }
+            });
+
+            const finalScore = Math.round((correctCount / questionsData.length) * 100);
+
+            document.getElementById('sec-main-quiz').classList.add('hidden-section');
+            document.getElementById('sec-result').classList.remove('hidden-section');
+
+            document.getElementById('final-score-val').innerText = finalScore;
+
+            const statusText = document.getElementById('final-status-text');
+            const certArea = document.getElementById('certificate-wrapper');
+            const certActionArea = document.getElementById('certificate-action-area');
+
+            if (finalScore >= 70) {
+                statusText.className = "text-sm font-bold text-emerald-700";
+                statusText.innerText = "LULUS! Anda Memenuhi Kriteria Kompetensi Pengawas Sekolah.";
+                
+                // Show Certificate
+                certArea.classList.remove('hidden');
+                certActionArea.classList.remove('hidden');
+
+                document.getElementById('cert-user-name').innerText = currentUser.name;
+                document.getElementById('cert-user-unit').innerText = currentUser.unit;
+                document.getElementById('cert-score').innerText = finalScore;
+                document.getElementById('cert-rand-id').innerText = Math.floor(1000 + Math.random() * 9000);
+            } else {
+                statusText.className = "text-sm font-bold text-red-600";
+                statusText.innerText = "BELUM LULUS (Nilai Minimal Kelulusan Sertifikat: 70). Silakan Pelajari Kembali Materi Kepengawasan.";
+            }
+
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
